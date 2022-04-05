@@ -21,7 +21,8 @@ int main(void)
 
 int main(void)
 {
-	printf("Hello World");
+	printf("Hello World!\n");
+	printf("Let's practice Visual Studio today!\n");
 }
 #endif
 
