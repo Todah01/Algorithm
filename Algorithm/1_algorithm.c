@@ -190,7 +190,7 @@ int main(void)
 #endif
 
 //3¹ø
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
