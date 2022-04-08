@@ -86,7 +86,7 @@ void spira(int n)
 	{			
 		for (j = 1; j <= n - i; j++)			
 			putchar(' ');
-		for (j = 1; j <= i*2 - 1; j++)		
+		for (j = 1; j <= i*2 - 1; j++)
 			putchar('*');
 		putchar('\n');
 	}
@@ -189,7 +189,7 @@ int main(void)
 }
 #endif
 
-//3¹ø
+//Challenge
 #if 0
 #include <stdio.h>
 #include <stdbool.h>
