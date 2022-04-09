@@ -312,6 +312,7 @@ int main(void)
 
 #if 0
 #include <stdio.h>
+#pragma warning(disable : 4996)
 
 typedef struct {
 	int y; 
@@ -423,7 +424,7 @@ int main(void)
 int main()
 {
     int n = 0;
-    float scores[1000] = { 0, };
+    float scores[1001] = { 0, };
     float max = 0;
     float sum = 0;
 
@@ -449,6 +450,7 @@ int main()
 #if 0
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #pragma warning(disable : 4996)
 
 int main()
