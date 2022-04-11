@@ -104,12 +104,49 @@ int main()
 }
 #endif
 
-//3¹ø
-#if 1
+//Challenge
+#if 0
 #include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable : 4996)
+
+int binary_search(int size, int key)
+{
+	int pl, pc, pr, cnt;
+	pl = 1;
+	pr = size * size;
+
+	while (1)
+	{
+		pc = (pl + pr) / 2;
+		cnt = 0;
+
+		for (int i = 1; i < size + 1; i++)
+		{
+			cnt += min(pc / i, size);
+		}
+
+		if (key <= pc)
+		{
+			pr = pc - 1;
+		}
+		else
+		{
+			pl = pc + 1;
+		}
+
+		if (pl <= pr)
+		{
+			return pl;
+		}
+	}
+}
 
 int main()
 {
+	int n, k;
 
+	scanf("%d %d", &n, &k);
+	printf("%d", binary_search(n, k));
 }
 #endif
