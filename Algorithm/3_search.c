@@ -101,6 +101,8 @@ int main()
 	{
 		printf("%d\n", binary_search(n_arr, m_arr[i], n));
 	}
+	free(n_arr);
+	free(m_arr);
 }
 #endif
 
@@ -109,37 +111,37 @@ int main()
 #include <stdio.h>
 #include <stdlib.h>
 #pragma warning(disable : 4996)
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
 int binary_search(int size, int key)
 {
-	int pl, pc, pr, cnt;
+	int pl, pc, pr, cnt, result, num;
 	pl = 1;
-	pr = size * size;
+	pr = key;
+	result = -1;
+	num = 0;
 
-	while (1)
+	while (pl <= pr)
 	{
 		pc = (pl + pr) / 2;
 		cnt = 0;
 
 		for (int i = 1; i < size + 1; i++)
 		{
-			cnt += min(pc / i, size);
+			cnt += MIN(pc / i, size);
 		}
 
-		if (key <= pc)
+		if (key <= cnt)
 		{
+			result = pc;
 			pr = pc - 1;
 		}
 		else
 		{
 			pl = pc + 1;
 		}
-
-		if (pl <= pr)
-		{
-			return pl;
-		}
 	}
+	return result;
 }
 
 int main()
@@ -148,5 +150,63 @@ int main()
 
 	scanf("%d %d", &n, &k);
 	printf("%d", binary_search(n, k));
+}
+#endif
+
+//Challenge
+#if 1
+#include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable : 4996)
+
+int binary_search(int arr[], int MAX, int size, int goal)
+{
+	int result, cnt;
+	long long pl, pc, pr;
+
+	pl = 1;
+	pr = MAX;
+	result = 0;
+
+	while (pl <= pr)
+	{
+		pc = (pl + pr) / 2;
+		cnt = 0;
+
+		for (int i = 0; i < size; i++)
+		{
+			cnt += arr[i] / pc;
+		}
+
+		if (cnt >= goal)
+		{
+			pl = pc + 1;
+			if (result < pc) result = pc;
+		}
+		else
+		{
+			pr = pc - 1;
+		}
+	}
+	return result;
+}
+
+int main()
+{
+	int *line;
+	int k, n;
+	int MAX = 0;
+
+	scanf("%d %d", &k, &n);
+
+	line = (int*)calloc(k, sizeof(int));
+
+	for (int i = 0; i < k; i++)
+	{
+		scanf("%d", &line[i]);
+		if (MAX < line[i]) MAX = line[i];
+	}
+	printf("%d", binary_search(line, MAX, k, n));
+	free(line);
 }
 #endif
