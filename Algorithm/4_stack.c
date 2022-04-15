@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "4_stack_header.h"
-#pragma warning(disable : 4996)
 
 int Initialize(IntStack* s, int max)
 {
@@ -24,12 +23,12 @@ int Push(IntStack* s, int x)
 	return 0;
 }
 
-int Pop(IntStack* s, int *x)
+int Pop(IntStack* s, int* x)
 {
 	if (s->ptr <= 0)
 		return -1;
 	*x = s->stk[s->ptr--];
-	return 0;
+	return *x;
 }
 
 int Peek(const IntStack* s, int* x)
@@ -61,7 +60,7 @@ void Print(const IntStack* s)
 }
 #endif
 
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include "4_stack_header.h"
@@ -69,13 +68,11 @@ void Print(const IntStack* s)
 
 int main()
 {
-	int n, num, cnt = 0;
-	int* n_arr;
+	int n, x, cnt = 0;
+	int n_arr[100];
 	IntStack s;
 
 	scanf("%d", &n);
-
-	n_arr = calloc(n, sizeof(int));
 
 	if (Initialize(&s, n) == -1)
 	{
@@ -89,15 +86,46 @@ int main()
 
 	for (int i = 0; i < n; i++)
 	{
-		Push(&s, &n_arr[i]);
+		Push(&s, i + 1);
 		printf("+\n");
 
-		while ((Size(&s) != 0) && (Peek(&s, &num) == &n_arr[cnt]))
+		while (Peek(&s, &x) == n_arr[cnt])
 		{
-			Pop(&s, &num);
+			Pop(&s, &x);
 			printf("-\n");
 			cnt++;
 		}
+	}
+}
+#endif
+
+#if 0
+#include <stdio.h>
+#include <stdlib.h>
+#include "4_stack_header.h"
+#pragma warning(disable : 4996)
+
+int main()
+{
+	int n, num;
+	int ans[100] = { NULL };
+	int seq[100] = { NULL };
+	IntStack s;
+
+	scanf("%d", &n);
+
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &seq[i]);
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		while ((Size(&s) != 0) && (seq[Peek(&s, &num)] < seq[i]))
+		{
+			seq[Pop(&s, &num)] = seq[i];
+		}
+		Push(&s, i);
 	}
 }
 #endif
