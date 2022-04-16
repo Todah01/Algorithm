@@ -19,24 +19,43 @@ int Push(IntStack* s, int x)
 {
 	if (s->ptr >= s->max)
 		return -1;
+
 	s->stk[s->ptr++] = x;
 	return 0;
 }
+
+//int Push_2(IntStack* s, IntStack k, int x)
+//{
+//	if (s->ptr >= s->max)
+//		return -1;
+//
+//	s->stk[s->ptr++] = x;
+//	return 0;
+//}
 
 int Pop(IntStack* s, int* x)
 {
 	if (s->ptr <= 0)
 		return -1;
+
 	*x = s->stk[s->ptr--];
-	return *x;
+	return 0;
 }
+
+//int Pop_2(IntStack* s, IntStack k, int* x)
+//{
+//	if (s->ptr <= 0)
+//		return -1;
+//
+//	*x = s->stk[s->ptr--];
+//	return 0;
+//}
 
 int Peek(const IntStack* s, int* x)
 {
 	if (s->ptr <= 0)
-	{
 		return -1;
-	}
+
 	*x = s->stk[s->ptr - 1];
 	return *x;
 }
@@ -60,6 +79,68 @@ void Print(const IntStack* s)
 }
 #endif
 
+#if 0
+#include <stdio.h>
+#include "4_stack_header.h"
+#pragma warning(disable : 4996)
+
+int main(void)
+{
+	IntStack s, StackA, StackB;
+
+	if (Initialize(&s, 12) == -1) {
+		return 1;
+	}
+
+	while (1) {
+		int menu, x;
+		int idx;
+
+		scanf("%d", &menu);
+
+		if (menu == 0) break;
+
+		switch (menu) {
+		case 1:
+			scanf("%d", &x);
+			if (Push_2(&s, StackA, x) == -1)
+				puts("\a오류 : 푸시에 실패했습니다.");
+			break;
+
+		case 2:
+			if (Pop_2(&s, StackA, &x) == -1)
+				puts("\a오류 : 팝에 실패했습니다.");
+			else
+				printf("팝한 데이터는 %d입니다.\n", x);
+			break;
+
+		case 5:
+			scanf("%d", &x);
+			if ((idx = Search(&s, StackA, x)) == -1)
+				puts("\a오류 : 검색에 실패했습니다.");
+			else
+				printf("데이터는 인덱스 %d 위치에 있습니다.\n", idx);
+			break;
+
+		case 7:
+			scanf("%d", &x);
+			if (Push_2(&s, StackB, x) == -1)
+				puts("\a오류 : 푸시에 실패했습니다.");
+			break;
+
+		case 8:
+			if (Pop_2(&s, StackB, &x) == -1)
+				puts("\a오류 : 팝에 실패했습니다.");
+			else
+				printf("팝한 데이터는 %d입니다.\n", x);
+			break;
+		}
+	}
+	return 0;
+}
+#endif
+
+//1번
 #if 0
 #include <stdio.h>
 #include <stdlib.h>
@@ -99,7 +180,8 @@ int main()
 }
 #endif
 
-#if 0
+//2번
+#if 1
 #include <stdio.h>
 #include <stdlib.h>
 #include "4_stack_header.h"
@@ -107,12 +189,16 @@ int main()
 
 int main()
 {
-	int n, num;
-	int ans[100] = { NULL };
+	int n, x;
 	int seq[100] = { NULL };
 	IntStack s;
 
 	scanf("%d", &n);
+
+	if (Initialize(&s, n) == -1)
+	{
+		return 1;
+	}
 
 	for (int i = 0; i < n; i++)
 	{
@@ -121,11 +207,23 @@ int main()
 
 	for (int i = 0; i < n; i++)
 	{
-		while ((Size(&s) != 0) && (seq[Peek(&s, &num)] < seq[i]))
+		while ((Size(&s) != 0) && (seq[Peek(&s, &x)] < seq[i]))
 		{
-			seq[Pop(&s, &num)] = seq[i];
+			seq[Peek(&s, &x)] = seq[i];
+			Pop(&s, &x);
 		}
 		Push(&s, i);
+	}
+
+	while (Size(&s) != 0)
+	{
+		seq[Peek(&s, &x)] = -1;
+		Pop(&s, &x);
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ", seq[i]);
 	}
 }
 #endif
