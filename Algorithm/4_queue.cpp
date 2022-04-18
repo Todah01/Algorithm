@@ -1,5 +1,5 @@
 // 1¹ø
-#if 1
+#if 0
 #include <queue>
 #include <iostream>
 #include <string>
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 #endif
 
 //2¹ø
-#if 1
+#if 0
 #include <queue>
 #include <iostream>
 #include <string>

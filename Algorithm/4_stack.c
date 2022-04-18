@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include "4_stack_header.h"
@@ -181,7 +181,7 @@ int main()
 #endif
 
 //2¹ø
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include "4_stack_header.h"
