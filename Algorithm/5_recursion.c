@@ -19,7 +19,7 @@ int main()
 #endif
 
 //2¹ø
-#if 1
+#if 0
 #include <stdio.h>
 #pragma warning(disable : 4996)
 

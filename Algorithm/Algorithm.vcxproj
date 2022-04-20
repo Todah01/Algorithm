@@ -145,6 +145,7 @@
     <ClCompile Include="4_queue.cpp" />
     <ClCompile Include="4_stack.c" />
     <ClCompile Include="5_recursion.c" />
+    <ClCompile Include="6_sort.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="4_stack_header.h" />
