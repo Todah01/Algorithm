@@ -146,7 +146,7 @@ int main(void)
 }
 #endif
 
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #pragma warning(disable : 4996)
@@ -199,5 +199,166 @@ int main(void)
 	free(x);	
 
 	return 0;
+}
+#endif
+
+#if 0
+#include <stdio.h>
+#include <stdlib.h>
+
+void bin_insertion(int a[], int n)
+{
+	int i, j;
+
+	for (i = 1; i < n; i++) {
+		int key = a[i];
+		int pl = 0;		/* 검색 범위의 첫 인덱스 */
+		int pr = i - 1;	/* 검색 범위의 끝 인덱스 */
+		int pc;			/* 검색 범위의 가운데 인덱스 */
+		int pd;			/* 삽입하는 위치의 인덱스 */
+
+		do {
+			pc = (pl + pr) / 2;
+			if (a[pc] == key)		/* 검색 성공 */
+				break;
+			else if (a[pc] < key)
+				pl = pc + 1;
+			else
+				pr = pc - 1;
+		} while (pl <= pr);
+
+		pd = (pl <= pr) ? pc + 1 : pr + 1;
+
+		for (j = i; j > pd; j--)
+			a[j] = a[j - 1];
+		a[pd] = key;
+	}
+}
+
+int main(void)
+{
+	int i, nx;
+	int *x;		
+
+	scanf("%d", &nx);
+	x = calloc(nx, sizeof(int));	
+
+	for (i = 0; i < nx; i++) {
+		printf("x[%d] : ", i);
+		scanf("%d", &x[i]);
+	}
+
+	bin_insertion(x, nx);			
+
+	for (i = 0; i < nx; i++)
+		printf("x[%d] = %d\n", i, x[i]);
+
+	free(x);	
+
+	return 0;
+}
+#endif
+
+#if 0
+#include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable : 4996)
+
+void bin_insertion(int a[], int n)
+{
+	int i;
+	for (i = 1; i < n; i++) {
+		int key = a[i];
+		int pl = 0;		
+		int pr = i - 1;	
+		int pc;			
+		int pd;			
+
+		do {
+			pc = (pl + pr) / 2;
+			if (a[pc] == key)		
+				break;
+			else if (a[pc] < key)
+				pl = pc + 1;
+			else
+				pr = pc - 1;
+		} while (pl <= pr);
+		pd = (pl <= pr) ? pc + 1 : pr + 1;
+
+		memmove(&a[pd + 1], &a[pd], (i - pd) * sizeof(int));
+		a[pd] = key;
+	}
+}
+
+int main(void)
+{
+	int i, nx;
+	int *x;		
+
+	scanf("%d", &nx);
+	x = calloc(nx, sizeof(int));
+
+	for (i = 0; i < nx; i++) {
+		printf("x[%d] : ", i);
+		scanf("%d", &x[i]);
+	}
+
+	bin_insertion(x, nx);		
+
+	for (i = 0; i < nx; i++)
+		printf("x[%d] = %d\n", i, x[i]);
+
+	free(x);	
+
+	return 0;
+}
+#endif
+
+//1번
+#if 1
+#include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable : 4996)
+#define swap(type, x, y)  do { type t = x; x = y; y = t; } while (0)
+
+int __sort(int a[], int left, int right)
+{
+	int i;
+	int pl = left;
+	int pr = right;
+	int x = a[(pl + pr) / 2];
+
+	do {
+		while (a[pl] < x) pl++;
+		while (a[pr] > x) pr--;
+		if (pl <= pr)
+		{
+			swap(int, a[pl], a[pr]);
+			pl++;
+			pr--;
+		}
+	} while (pl <= pr);
+	if (left < pr) __sort(a, left, pr);
+	if (pl < right) __sort(a, pl, right);
+}
+
+int main()
+{
+	int nx;
+	int* x;
+
+	scanf("%d", &nx);
+	x = calloc(nx, sizeof(int));
+	for (int i = 0; i < nx; i++)
+	{
+		scanf("%d", &x[i]);
+	}
+	__sort(x, 0, nx - 1);
+	for (int i = 0; i < nx; i++)
+	{
+		printf("%d\n", x[i]);
+	}
+
+	free(x);
 }
 #endif
