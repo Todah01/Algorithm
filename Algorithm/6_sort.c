@@ -315,7 +315,7 @@ int main(void)
 #endif
 
 //1¹ø
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #pragma warning(disable : 4996)
@@ -360,5 +360,118 @@ int main()
 	}
 
 	free(x);
+}
+#endif
+
+//2¹ø
+#if 0
+#include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable : 4996)
+#define swap(type, x, y)  do { type t = x; x = y; y = t; } while (0)
+
+static void downheap(int a[], int left, int right)
+{
+	int temp = a[left];
+	int child;
+	int parent;
+	for (parent = left; parent < (right + 1) / 2; parent = child)
+	{
+		int cl = parent * 2 + 1;
+		int cr = cl + 1;
+		child = (cr <= right && a[cr] > a[cl]) ? cr : cl;
+		if (temp >= a[child])
+			break;
+		a[parent] = a[child];
+	}
+	a[parent] = temp;
+}
+
+void heapsort(int a[], int n)
+{
+	int i;
+	for (i = (n - 1) / 2; i >= 0; i--)
+	{
+		downheap(a, i, n - 1);
+	}
+	for (i = n - 1; i > 0; i--)
+	{
+		swap(int, a[0], a[i]);
+		downheap(a, 0, i - 1);
+	}
+}
+
+int main()
+{
+	int i, nx;
+	int* x;
+
+	scanf("%d", &nx);
+	x = calloc(nx, sizeof(int));
+	for (i = 0; i < nx; i++)
+	{
+		scanf("%d", &x[i]);
+	}
+	heapsort(x, nx);
+	for (i = 0; i < nx; i++)
+	{
+		printf("%d\n", x[i]);
+	}
+	free(x);
+}
+#endif
+
+//3¹ø
+#if 0
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#pragma warning(disable : 4996)
+
+typedef struct
+{
+	int index;
+	int age;
+	char name[10];
+} Member;
+
+int membercmp(const Member* x, const Member* y)
+{
+	if (x->age < y->age)
+	{
+		return -1;
+	}
+	else if (x->age > y->age)
+	{
+		return 1;
+	}
+	else if (x->age == y->age)
+	{
+		if (x->index < y->index) return -1;
+		else return 1;
+	}
+	return 0;
+}
+
+int main()
+{
+	int nx;
+	Member x[100];
+
+	scanf("%d", &nx);
+
+	for (int i = 0; i < nx; i++)
+	{
+		x[i].index = i;
+		scanf("%d", &x[i].age);
+		scanf("%s", x[i].name);
+	}
+
+	qsort(x, nx, sizeof(Member), (int(*)(const void*, const void*))membercmp);
+
+	for (int i = 0; i < nx; i++)
+	{
+		printf("%d %s\n", x[i].age, x[i].name);
+	}
 }
 #endif
