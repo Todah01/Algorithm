@@ -299,7 +299,6 @@ int main(void)
 	x = calloc(nx, sizeof(int));
 
 	for (i = 0; i < nx; i++) {
-		printf("x[%d] : ", i);
 		scanf("%d", &x[i]);
 	}
 
@@ -460,13 +459,14 @@ int main()
 
 	scanf("%d", &nx);
 
+	printf("%d\n", sizeof(Member));
+
 	for (int i = 0; i < nx; i++)
 	{
 		x[i].index = i;
 		scanf("%d", &x[i].age);
 		scanf("%s", x[i].name);
 	}
-
 	qsort(x, nx, sizeof(Member), (int(*)(const void*, const void*))membercmp);
 
 	for (int i = 0; i < nx; i++)

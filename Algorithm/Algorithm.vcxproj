@@ -146,9 +146,11 @@
     <ClCompile Include="4_stack.c" />
     <ClCompile Include="5_recursion.c" />
     <ClCompile Include="6_sort.c" />
+    <ClCompile Include="7_set.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="4_stack_header.h" />
+    <ClInclude Include="7_set_header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

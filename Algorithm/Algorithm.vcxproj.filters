@@ -36,9 +36,15 @@
     <ClCompile Include="6_sort.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="7_set.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="4_stack_header.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="7_set_header.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
