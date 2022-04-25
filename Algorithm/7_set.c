@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include "7_set_header.h"
@@ -223,7 +223,7 @@ void Terminate(IntSet *s)
 }
 #endif
 
-#if 1
+#if 0
 #include <stdio.h>
 #include "7_set_header.h"
 #pragma warning(disable : 4996)
@@ -265,5 +265,44 @@ int main()
 				printf("s1에 들어있%s.\n", idx >= 0 ? "습니다" : "지 않습니다"); break;
 		}
 	}
+}
+#endif
+
+#if 1
+#include <stdio.h>
+#include <stdlib.h>
+#include "7_bit_set.h"
+
+int IsMember(BitSet s, int n)
+{
+	return s & SetOf(n);
+}
+
+void Print(BitSet s)
+{
+	int i;
+	printf("{");
+	for (i = 0; i < BitSetBits; i++)
+	{
+		if (IsMember(s, i))
+			printf("%d", i);
+	}
+	printf("}");
+}
+
+void PrintLn(BitSet s)
+{
+	Print(s);
+	putchar('\n');
+}
+
+int main()
+{
+	BitSet s1 = BitSetNull;
+	BitSet s2 = BitSetNull;
+	// s1과 s2의 교집합 : & 연산자
+	// s1과 s2의 합집합 : | 연산자
+	// s1과 s2의 차집합 : s1 & ~s2
+	printf("s1 과 s2의 대칭차집합"); PrintLn((s1 & s2) & ~(s1 | s2));
 }
 #endif
