@@ -2,13 +2,14 @@
 #if 0
 #include <stdio.h>
 #include <string.h>
+#pragma warning(disable : 4996)
 
 int bf_matchr(const char txt[], const char pat[])
 {
-	int txt_len = strlen(txt);		
-	int pat_len = strlen(pat);		
-	int pt = txt_len - pat_len;		
-	int pp;							
+	int txt_len = strlen(txt);
+	int pat_len = strlen(pat);
+	int pt = txt_len - pat_len;
+	int pp;
 
 
 	while (pt >= 0) {
@@ -122,18 +123,18 @@ int _print(const char txt[], const char pat[], int txt_len, int pat_len, int pt,
 
 int bm_match(const char txt[], const char pat[])
 {
-	int pt;							
-	int pp;							
-	int txt_len = strlen(txt);		
-	int pat_len = strlen(pat);		
-	int skip[UCHAR_MAX + 1];		
+	int pt;
+	int pp;
+	int txt_len = strlen(txt);
+	int pat_len = strlen(pat);
+	int skip[UCHAR_MAX + 1];
 
-	for (pt = 0; pt <= UCHAR_MAX; pt++)		
+	for (pt = 0; pt <= UCHAR_MAX; pt++)
 		skip[pt] = pat_len;
 	for (pt = 0; pt < pat_len - 1; pt++)
 		skip[pat[pt]] = pat_len - pt - 1;
 	while (pt < txt_len) {
-		pp = pat_len - 1;					
+		pp = pat_len - 1;
 
 		while (_print(txt, pat, txt_len, pat_len, pt, pp), txt[pt] == pat[pp]) {
 			if (pp == 0)
@@ -186,5 +187,130 @@ int main()
 	scanf("%s", s2);
 	p = strstr(s1, s2);
 	if (p == NULL) printf("패턴이 없습니다.");
+}
+#endif
+
+//1번
+#if 0
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#pragma warning(disable : 4996)
+#define LEN 1000001
+
+int main()
+{
+	char input[LEN];
+	int len, cnt = 1;
+
+	fgets(input, sizeof(input), stdin);
+	len = strlen(input);
+
+	if (input[0] == ' ') cnt--;
+	if (input[len - 2] == ' ') cnt--;
+
+	for (int i = 0; i < len; i++)
+	{
+		if (input[i] == ' ') cnt++;
+	}
+	printf("%d", cnt);
+	return 0; 
+}
+#endif
+
+//2번
+#if 0
+#include <stdlib.h>
+#include <stdio.h>
+#pragma warning(disable : 4996)
+#define LEN 101
+
+int main()
+{
+	char input[LEN];
+	int n, sum = 0;
+
+	scanf("%d", &n);
+	scanf("%s", input);
+
+	for (int i = 0; i < n; i++)
+	{
+		sum += input[i] - '0';
+	}
+	printf("%d", sum);
+
+	return 0;
+}
+#endif
+
+//3번
+#if 0
+#include <stdlib.h>
+#include <stdio.h>
+#pragma warning(disable : 4996)
+
+int check_arr(int* copy, int n, int m)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += copy[i];
+	}
+	if (sum <= m)
+	{
+		return m - sum;
+	}
+	else return INT_MAX;
+}
+
+void Combination(int* arr, int* copy, int n, int r, int depth, int m, int *min)
+{
+	if (r == 0)
+	{
+		int result = check_arr(copy, depth, m);
+		if (result < *min)
+		{
+			*min = result;
+		}
+		return;
+	}
+	if (n < r)
+	{
+		return;
+	}
+	else
+	{
+		copy[r - 1] = arr[n - 1];
+		Combination(arr, copy, n - 1, r - 1, depth, m, &min);
+		Combination(arr, copy, n - 1, r, depth, m, &min);
+	}
+}
+
+int main()
+{
+	int min = INT_MAX;
+	int* arr;
+	int* copy;
+	int n, c, m, r = 3;
+
+	scanf("%d %d", &n, &m);
+
+	c = r;
+
+	arr = malloc(n * sizeof(int));
+	copy = malloc(r * sizeof(int));
+
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+
+	Combination(arr, copy, n, r, c, m, &min);
+
+	printf("%d", min);
+
+	free(arr);
+	free(copy);
+	return 0;
 }
 #endif

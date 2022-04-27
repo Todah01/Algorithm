@@ -268,7 +268,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include "7_bit_set.h"
