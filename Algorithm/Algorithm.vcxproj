@@ -148,11 +148,14 @@
     <ClCompile Include="6_sort.c" />
     <ClCompile Include="7_set.c" />
     <ClCompile Include="8_string.c" />
+    <ClCompile Include="9_list.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="11_member.h" />
     <ClInclude Include="4_stack_header.h" />
     <ClInclude Include="7_bit_set.h" />
     <ClInclude Include="7_set_header.h" />
+    <ClInclude Include="9_list_header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
