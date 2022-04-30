@@ -62,5 +62,8 @@
     <ClInclude Include="11_member.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="9_linked_list_header.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

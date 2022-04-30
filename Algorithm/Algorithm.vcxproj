@@ -155,6 +155,7 @@
     <ClInclude Include="4_stack_header.h" />
     <ClInclude Include="7_bit_set.h" />
     <ClInclude Include="7_set_header.h" />
+    <ClInclude Include="9_linked_list_header.h" />
     <ClInclude Include="9_list_header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

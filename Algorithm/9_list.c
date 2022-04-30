@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include "11_member.h"
@@ -29,7 +29,65 @@ void InsertFront(List* list, const Member* x)
 }
 #endif
 
+#if 1
+#include <stdio.h>
+#include <stdlib.h>
+#include "11_member.h"
+#include "9_linked_list_header.h"
+
+//삽입할 레코드의 인덱스를 구한 다음 반환
+static Index GetIndex(List* list)
+{
+	if (list->deleted == Null)
+		return ++(list->max);
+	else
+	{
+		Index rec = list->deleted;
+		list->deleted = list->n[rec].Dnext;
+		return rec;
+	}
+}
+
+//지정된 레코드를 삭제 리스트에 등록
+static void DeleteIndex(List* list, Index idx)
+{
+	if (list->deleted == Null)
+	{
+		list->deleted = idx;
+		list->n[idx].Dnext = Null;
+	}
+	else
+	{
+		Index ptr = list->deleted;
+		list->deleted = idx;
+		list->n[idx].Dnext = ptr;
+	}
+}
+
+static void SetNode(Node* n, const Member* x, Index next)
+{
+	n->data = *x;
+	n->next = next;
+}
+
+void Initialize(List* list, int size)
+{
+	list->n = calloc(size, sizeof(Node));
+	list->head = Null;
+	list->crnt = Null;
+	list->max = Null;
+	list->deleted = Null;
+}
+#endif
+
 #if 0
+// struct student people;
+// struct student *person;
+// person = &people;
+// (*person).grade == people.grade == person->grade
+// 간접멤버 참조연산자 -> : 자기 자신멤버가 아닌 참조된 구조체의 멤버를 가르길때 사용
+// 멤버 참조연산자 -> : 자기 자신 구조체의 직접적인 멤버변수를 사용할때 사용
+
 /* Initialize : NULL
 *  
 */
