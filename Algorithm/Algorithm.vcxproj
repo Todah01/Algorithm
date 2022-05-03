@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="10_tree.c" />
     <ClCompile Include="1_algorithm.c" />
     <ClCompile Include="2_array.c" />
     <ClCompile Include="3_search.c" />
@@ -151,6 +152,7 @@
     <ClCompile Include="9_list.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="10_tree.h" />
     <ClInclude Include="9_circdblLinkedList.h" />
     <ClInclude Include="11_member.h" />
     <ClInclude Include="4_stack_header.h" />
