@@ -1,5 +1,5 @@
-#ifndef __Member
-#define __Member
+#ifndef __Member_Sec
+#define __Member_Sec
 
 typedef struct {
 	int no;

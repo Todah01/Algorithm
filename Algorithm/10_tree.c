@@ -1,7 +1,7 @@
-#if 0
+#if 1
 #include <stdio.h>
 #include <stdlib.h>
-#include "11_member.h"
+
 #include "10_tree.h"
 
 static BinNode* AllocBinNode(void)

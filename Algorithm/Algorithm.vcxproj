@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Users\wobo5\OneDrive\바탕 화면\Algorithm\doit_dsalgo_with_c-master\doit_dsalgo_with_c-master\실행에필요한추가소스\Member.c" />
     <ClCompile Include="10_tree.c" />
     <ClCompile Include="1_algorithm.c" />
     <ClCompile Include="2_array.c" />
@@ -152,6 +153,7 @@
     <ClCompile Include="9_list.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Users\wobo5\OneDrive\바탕 화면\Algorithm\doit_dsalgo_with_c-master\doit_dsalgo_with_c-master\실행에필요한추가소스\Member.h" />
     <ClInclude Include="10_tree.h" />
     <ClInclude Include="9_circdblLinkedList.h" />
     <ClInclude Include="11_member.h" />
