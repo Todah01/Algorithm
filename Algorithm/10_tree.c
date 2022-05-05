@@ -92,9 +92,17 @@ BinNode *GetMaxNode(const BinNode *p)
 #endif
 
 //1번
-#if 0
+#if 1
 #include <stdio.h>
 int arr[26][2];
+
+//typedef struct
+//{
+//	char left;
+//	char right;
+//} node;
+//
+//node tree[27];
 
 void pre(int x) {
 	if (x < 0) return;
@@ -102,7 +110,6 @@ void pre(int x) {
 	printf("%c", x + 65);
 	pre(arr[x][0]);
 	pre(arr[x][1]);
-
 	return;
 }
 
@@ -171,8 +178,51 @@ int main()
 #endif
 
 //2번
-#if 1
+#if 0
+#include <iostream>
+using namespace std;
 
+int n;
+int in_Order[100001];
+int post_Order[100001];
+
+// 중위순회배열(s1~e1) / L / Root / R
+// 후위순회배열(s2~e2) / L / R / Root
+void DFS(int s1, int e1, int s2, int e2) {
+
+	if (s1 > e1 || s2 > e2) return;
+	int Root = post_Order[e2];
+
+	int idx = -1;
+	for (int i = s1; i <= e1; i++)
+	{
+		if (in_Order[i] == Root) {
+			idx = i;
+			break;
+		}
+	}
+	int L_cnt = idx - s1; // Left 개수
+
+	// Root
+	cout << Root << " ";
+	// L
+	DFS(s1, idx - 1, s2, s2 + L_cnt - 1);
+	// R
+	DFS(idx + 1, e1, s2 + L_cnt, e2 - 1);
+}
+
+int main() {
+
+	cin >> n;
+	for (int i = 1; i <= n; i++) {
+		cin >> in_Order[i];
+	}
+	for (int i = 1; i <= n; i++) {
+		cin >> post_Order[i];
+	}
+
+	DFS(1, n, 1, n);
+}
 #endif
 
 //3번
