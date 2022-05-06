@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "11_member.h"
+#pragma warning(disable : 4996)
 
 /*--- 회원 번호 비교 함수 ---*/
 int MemberNoCmp(const Member* x, const Member* y)

@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include "11_member.h"
@@ -54,7 +54,7 @@ void PrintTree(const BinNode* p)
 #endif
 
 //Q1
-#if 1
+#if 0
 void PrintTreeReverse(const BinNode *p)
 {
 	if (p != NULL) {
@@ -92,8 +92,9 @@ BinNode *GetMaxNode(const BinNode *p)
 #endif
 
 //1¹ø
-#if 1
+#if 0
 #include <stdio.h>
+#pragma warning(disable : 4996)
 int arr[26][2];
 
 //typedef struct

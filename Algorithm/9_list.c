@@ -29,7 +29,7 @@ void InsertFront(List* list, const Member* x)
 }
 #endif
 
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include "11_member.h"
