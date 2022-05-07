@@ -54,6 +54,9 @@
     <ClCompile Include="11_hash.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="11_hash_pratice.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="4_stack_header.h">

@@ -81,7 +81,7 @@ int Remove(ChainHash* h, const Member* x)
 }
 #endif
 
-#if 1
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -199,5 +199,24 @@ void Terminate(ClosedHash* h)
 	Clear(h);
 	free(h->table);
 	h->size = 0;
+}
+#endif
+
+#if 0
+#include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable : 4996)
+#define LEN 100000
+
+typedef struct
+{
+	int index;
+	char name[20];
+} Data;
+
+int main()
+{
+	Data Participant[LEN] = NULL;
+	Data Completion[LEN] = NULL;
 }
 #endif
