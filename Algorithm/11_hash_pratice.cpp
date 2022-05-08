@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#define LEN 100000
 
 using namespace std;
 
